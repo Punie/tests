@@ -46,16 +46,16 @@ init flags url key =
         route =
             Routes.fromUrl url
 
-        ( startModel, startMessage ) =
+        ( page, cmd ) =
             Pages.init route
 
         model =
-            { page = startModel
+            { page = page
             , url = url
             , key = key
             }
     in
-        ( model, Cmd.map PageMsg startMessage )
+        ( model, Cmd.map PageMsg cmd )
 
 
 onUrlRequest : Browser.UrlRequest -> Msg
